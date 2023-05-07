@@ -13,6 +13,7 @@ const MAX_SPEED = 200
 const DeathEffect = preload("res://effects/PlayerDeath.tscn")
 
 onready var anim_player = $AnimationTree.get("parameters/playback")
+onready var playerback =$AnimationPlayer
 onready var sprite = $Sprite
 onready var sword_box = $HitboxPivot
 onready var hurbox = $Hurtbox
@@ -57,7 +58,7 @@ func play_animation(move_direction):
 		
 func start_attack():
 	attackTimer.wait_time = attack_cooldown
-	anim_player.travel("attack")
+	playerback.play("attack")
 	attackTimer.start()
 	
 func attack_in_progress():
