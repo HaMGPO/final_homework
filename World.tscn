@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://world/tileset/Background.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://world/tileset/Clouds.png" type="Texture" id=7]
 [ext_resource path="res://world/tileset/tiles.png" type="Texture" id=8]
 [ext_resource path="res://world/tileset/Stone_tileset.png" type="Texture" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://ui/HealthUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=12]
 
@@ -1392,9 +1391,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 18/shapes = [  ]
 18/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 32, 31.5 )
-
 [node name="World" type="Node2D"]
 position = Vector2( 50, 113 )
 
@@ -1468,16 +1464,6 @@ collision_mask = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
-
-[node name="Obstacle" type="Area2D" parent="."]
-position = Vector2( 101, 85 )
-
-[node name="Sprite" type="Sprite" parent="Obstacle"]
-texture = ExtResource( 10 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2( 0, -0.5 )
-shape = SubResource( 4 )
 
 [node name="enemy" parent="." instance=ExtResource( 12 )]
 position = Vector2( 225, 114 )
