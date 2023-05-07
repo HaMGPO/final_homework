@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/attacks/RangeAttack.gd" type="Script" id=2]
+[ext_resource path="res://enemies/sprites/weapon_sword_1.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.59641
+height = 11.4682
+
+[node name="RangeAttack" groups=["projectiles"] instance=ExtResource( 1 )]
+rotation = 0.753982
+scale = Vector2( 2, 1.5 )
+collision_layer = 64
+collision_mask = 3
+script = ExtResource( 2 )
+damage = 10
+SPEED = 500
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+position = Vector2( -1.90735e-06, 0 )
+rotation = 0.785398
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = -1.61792
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+
+[connection signal="area_entered" from="." to="." method="_on_RangeAttack_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_RangeAttack_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
